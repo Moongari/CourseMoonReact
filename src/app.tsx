@@ -34,18 +34,34 @@ const[title,SetName] = useState<String>('POKEMONS'); // on definit un type les d
 const[pokemons] = useState<Pokemon[]>(POKEMONS);
 const[initListPokemon,SetInitListPokemon] = useState<Pokemon[]>([]);
 
+// 3 regles sur 
+//les Hooks on n'appel pas des hooks dans une boucle ou dans une condition
+//les Hooks uniquement depuis un composants de fonctions.
+//Modifier un etat par un remplacement SetInitListPokemon 
+// rappel il n'est pas possible de realiser des if, boucle dans le code jsx
+// il pour cela utiliser le javascriptNatif.
+
 useEffect(()=>{
   SetInitListPokemon(POKEMONS);
-},[])
+  },[]);
 
  return (
    
    <div>
-     <div>
+     <div className="col s12 m4 l3">
      <p><h2>NOMBRE DE {title} CONTENU DANS LA BASE :</h2></p>
    </div>
-    <p><h3>il y a  {pokemons.length} Pokemons dans votre liste. !</h3> </p> 
-    <p>{initListPokemon.length}</p>
+    <p><h3>il y a  {pokemons.length} Pokemons dans votre liste. sans HookEffect !</h3> </p> 
+    <p> il y a {initListPokemon.length} Pokemons dans votre liste. ! avec le HookEffect</p>
+    <div className='col s6'>
+        <p>Liste de nom des {title}</p>
+        <ul>
+          {initListPokemon.map(({name,id})=>(
+            <li key={name}>{id} = {name}</li>
+          ))}
+        </ul>
+    </div>
+    
    </div>
  
  )
