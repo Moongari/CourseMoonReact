@@ -55,9 +55,7 @@ useEffect(()=>{
     <p><h3>il y a  {pokemons.length} Pokemons dans votre liste. sans HookEffect !</h3> </p> 
     <p> il y a {initListPokemon.length} Pokemons dans votre liste. ! avec le HookEffect</p>
       <div className='row'>
-
       <p>Liste de nom des {title}</p>
-        
           {initListPokemon.map(({name,id,picture})=>(
             <div className="col s6 m4" key={name}>
               <div className='waves-effect waves-light btn'> N°:{id} --- {name}</div>
