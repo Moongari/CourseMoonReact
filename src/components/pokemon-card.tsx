@@ -7,14 +7,12 @@ type Props ={
 };
 
 //passage d'une props au parametre qui correspond a notre composant
+//composant enfant 
 const PokemonCard : FunctionComponent<Props>=({pokemon})=>{
 
     return(
         <div>
-
             Hey, ce composant est chargé d'afficher des pokémons..... :{pokemon.name}
-            
-
         </div>
 
     );
