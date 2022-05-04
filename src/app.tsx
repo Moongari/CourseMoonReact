@@ -1,7 +1,7 @@
 //import React from 'react'; // import du module react
 
 /* ========  destructuring d'ecmaScript6   =============*/
-import React,{FunctionComponent,useState} from 'react'; 
+import React,{FunctionComponent,useState,useEffect} from 'react'; 
 import POKEMONS from './models/mock-pokemon';
 import Pokemon from './models/pokemon';
 
@@ -24,13 +24,20 @@ nous creons une variable name est nous l'initialisons avec la variable React
 2) modification 'componentDidUpdate(prevProps,prevState) recoit les props et state avant la mise a jour du composant
 3) suppression d'un composant 'componentWillUnmount le composant est detruit lorsqu'il est retiré du DOM navigation de l'utilisateur par exemple
 ceci permet de desabonner certaines dependance du composant. et ainsi eviter les problemes de performances. 'Demontage'
+Cycle de vie Hook d'effet
+componentDidMount()
+componentDidUpdate(prevProps,prevState)
+componentWillUnmount()
+
 ===*/
 const[title,SetName] = useState<String>('POKEMONS'); // on definit un type les données String sauvegarder dans notre state
 const[pokemons] = useState<Pokemon[]>(POKEMONS);
+const[initListPokemon,SetInitListPokemon] = useState<Pokemon[]>([]);
 
+useEffect(()=>{
+  SetInitListPokemon(POKEMONS);
+},[])
 
-
-    
  return (
    
    <div>
@@ -38,6 +45,7 @@ const[pokemons] = useState<Pokemon[]>(POKEMONS);
      <p><h2>NOMBRE DE {title} CONTENU DANS LA BASE :</h2></p>
    </div>
     <p><h3>il y a  {pokemons.length} Pokemons dans votre liste. !</h3> </p> 
+    <p>{initListPokemon.length}</p>
    </div>
  
  )
