@@ -48,20 +48,32 @@ useEffect(()=>{
  return (
    
    <div>
-     <div className="col s12 m4 l3">
+     <div className="center">
      <p><h2>NOMBRE DE {title} CONTENU DANS LA BASE :</h2></p>
    </div>
+    <div className='container'>
     <p><h3>il y a  {pokemons.length} Pokemons dans votre liste. sans HookEffect !</h3> </p> 
     <p> il y a {initListPokemon.length} Pokemons dans votre liste. ! avec le HookEffect</p>
-    <div className='col s6'>
-        <p>Liste de nom des {title}</p>
-        <ul>
-          {initListPokemon.map(({name,id})=>(
-            <li key={name}>{id} = {name}</li>
+      <div className='row'>
+
+      <p>Liste de nom des {title}</p>
+        
+          {initListPokemon.map(({name,id,picture})=>(
+            <div className="col s6 m4" key={name}>
+              <div className='waves-effect waves-light btn'> N°:{id} --- {name}</div>
+            <div className="card horizontal">
+              <div className="card-image">
+                <img src={picture} alt={name}/>
+                </div>
+                </div>
+                </div>
           ))}
-        </ul>
+     
+
+      </div>
     </div>
     
+
    </div>
  
  )
