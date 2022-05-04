@@ -12,11 +12,13 @@ c'est fonction est contenu dans une constante ========= */
 const App: FunctionComponent = () => {
 /* ==== variable de type string qui contient la valeur react ===*/
 
-const name: String = 'React Moon'; 
-const firstName : String ='Moustafa';
+/* ==== le Hooks useState renvoie un tableau de 2 elements le SetName permet de gerer l'etat  
+nous creons une variable name est nous l'initialisons avec la variable React
+===*/
+const[name,SetName] = useState<String>('React'); // on definit un type les données String sauvegarder dans notre state
     
  return (
-  <h1>Hello, {name} {firstName} !</h1>  /* ==== utilisation de javascript dans jsx. ===*/
+  <h1>Hello, {name} !</h1>  /* ==== utilisation de javascript dans jsx. ===*/
  )
 }
   
