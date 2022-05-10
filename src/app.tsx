@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch,Route,Link } from 'react-router-dom';
 import PokemonsDetail from './pages/pokemon-detail';
 import PokemonList from './pages/pokemon-list';
 import PageNotFound from './pages/page-not-found';
+import PokemonEdit from './pages/pokemon-edit';
 
 /* ========Mise en place de la gestion des routes dans notre application dans le fichier app ========= */
 
@@ -26,6 +27,7 @@ const App: FunctionComponent = () => {
                  <Route exact path="/" component = {PokemonList}/>
                  <Route exact path="/pokemons" component = {PokemonList}/>
                  <Route exact path="/pokemons/:id" component = {PokemonsDetail}/>
+                 <Route exact path="/pokemon/edit/:id" component={PokemonEdit}/>
                 <Route component={PageNotFound}/> 
                </Switch>
       </div>
