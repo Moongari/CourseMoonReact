@@ -2,17 +2,33 @@
 
 /* ========  destructuring d'ecmaScript6   =============*/
 import React,{FunctionComponent,useState,useEffect} from 'react'; 
+import { BrowserRouter as Router, Switch,Route,Link } from 'react-router-dom';
+import PokemonsDetail from './pages/pokemon-detail';
 import PokemonList from './pages/pokemon-list';
 
-/* ======== useState import du Hook pour pour utiliser les states dans un composant de function ========= */
+/* ========Mise en place de la gestion des routes dans notre application dans le fichier app ========= */
 
-/* ======== FC signifie FonctionComponent composant sous la forme de fonction 
-  ou composant sous forme de classe
-c'est fonction est contenu dans une constante ========= */
+
 
 const App: FunctionComponent = () => {
  return (
-    <PokemonList />
+   <Router>
+      <div>
+        {/** barre de navigation ****/}
+        <nav>
+        <div className="nav-wrapper teal">
+          <Link to="/" className="brand-logo center">Pokemoon</Link>
+        </div>
+        </nav>
+               {/** systeme de route de notre application ****/}
+               <Switch>
+                 <Route exact path="/" component = {PokemonList}/>
+                 <Route exact path="/pokemons" component = {PokemonList}/>
+                 <Route exact path="/pokemons/:id" component = {PokemonsDetail}/>
+               </Switch>
+      </div>
+   </Router>
+  
  
  )
 }
