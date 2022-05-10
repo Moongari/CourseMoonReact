@@ -19,14 +19,19 @@ const PokemonCard : FunctionComponent<Props>=({pokemon,backgroundcolor="gray"})=
       
     }
 
+    const showMessage =()=>{
+      setColor(backgroundcolor);
+      alert("Hello "+ color);
+    }
+
     const hideBorder=()=>{
-        setColor("gris"); // on remet la couleur gris
+        setColor("white"); // on remet la couleur gris
     }
 
     return(
     <div className="col s6 m4" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
         
-      <div className="card horizontal" style={{backgroundColor:backgroundcolor }}>
+      <div className="card horizontal" style={{backgroundColor:color}}>
         <div className="card-image"> 
           <img src={pokemon.picture} alt={pokemon.name}/>
         </div>
