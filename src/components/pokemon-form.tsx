@@ -75,8 +75,15 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
 //on crée un evenement au moment de la validation du formulaire.
   const handleSubmit =(e:React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault(); // on bloque le comportement natif du formulaire afin de le gerer nous meme.
-    console.log(form);
-    history.push(`/pokemons/${pokemon.id}`);
+
+    const isFormValid = validateForm();
+    alert(isFormValid);
+    if(isFormValid){
+        history.push(`/pokemons/${pokemon.id}`);
+    }
+ 
+   
+
   }
 
 
@@ -84,9 +91,10 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
       let newForm: Form = form;
 
       //Validation du name
-    if(!/^[a-zA-Zàéè]{3,25}$/.test(form.name.value)){
-        const errMsg: string = 'le nom du pokemon est requi (1-25).';
+    if(!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)){
+        const errMsg: string = 'le nom du pokemon est requis (1-25).';
         const newField: Field ={value:form.name.value,error:errMsg,isValid:false};
+        alert(errMsg + ""+ newField.isValid);
         newForm ={...newForm,...{name:newField}};
     }else{
         const newField:Field = {value:form.name.value, error:'',isValid:true};
@@ -104,18 +112,33 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
         }
 
            //Validation du cp
-           if(!/^[0-9]{1,2}$/.test(form.hp.value)){
-            const errMsg: string = 'les points de vie du pokemon sont compris entre 0 et 99';
-            const newField: Field ={value:form.hp.value,error:errMsg,isValid:false};
+        if(!/^[0-9]{1,2}$/.test(form.cp.value)){
+            const errMsg: string = 'les degats du pokemon sont compris entre 0 et 99';
+            const newField: Field ={value:form.cp.value,error:errMsg,isValid:false};
             newForm ={...newForm,...{name:newField}};
         }else{
-            const newField:Field = {value:form.hp.value, error:'',isValid:true};
+            const newField:Field = {value:form.cp.value, error:'',isValid:true};
             newForm ={...newForm,...{name:newField}};
         }
 
         SetForm(newForm);
+        // renvoie un boolean 
         return newForm.name.isValid && newForm.hp.isValid && newForm.cp.isValid;
 
+  }
+
+
+// verifie si l'utilisateur n'a selectionné aucun type ou plus que 3 types 
+  const isTypeValid =(type:string):boolean =>{
+
+    if(form.types.value.length === 1 && hasType(type)){
+        return false;
+    }
+    if(form.types.value.length >= 3 && !hasType(type)){
+        return false;
+    }
+
+    return true;
   }
    
   return (
@@ -132,16 +155,34 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
                 <div className="form-group">
                   <label htmlFor="name">Nom</label>
                   <input id="name" name="name" type="text" className="form-control" value={form.name.value} onChange={e=>handleInputChange(e)}></input>
+                        {
+                        form.name.error && 
+                            <div className='card-panel red accent-1'>
+                            {form.name.error}
+                            </div>
+                        }
                 </div>
                 {/* Pokemon hp */}
                 <div className="form-group">
                   <label htmlFor="hp">Point de vie</label>
                   <input id="hp" type="number" name="hp" className="form-control" value={form.hp.value} onChange={e=>handleInputChange(e)}></input>
+                        {
+                        form.hp.error && 
+                            <div className='card-panel red accent-1'>
+                            {form.hp.error}
+                            </div>
+                        }
                 </div>
                 {/* Pokemon cp */}
                 <div className="form-group">
                   <label htmlFor="cp">Dégâts</label>
                   <input id="cp" type="number" name="cp" className="form-control" value={form.cp.value} onChange={e=>handleInputChange(e)}></input>
+                        {
+                        form.cp.error && 
+                            <div className='card-panel red accent-1'>
+                            {form.cp.error}
+                            </div>
+                        }
                 </div>
                 {/* Pokemon types */}
                 <div className="form-group">
@@ -149,7 +190,7 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
                   {types.map(type => (
                     <div key={type} style={{marginBottom: '10px'}}>
                       <label>
-                        <input id={type} type="checkbox" className="filled-in" value={type} checked={hasType(type)} onChange={e=> selectType(type,e)}></input>
+                        <input id={type} type="checkbox" className="filled-in" value={type} disabled={!isTypeValid(type)}checked={hasType(type)} onChange={e=> selectType(type,e)}></input>
                         <span>
                           <p className={formatType(type)}>{ type }</p>
                         </span>
