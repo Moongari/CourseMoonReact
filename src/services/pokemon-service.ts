@@ -22,7 +22,8 @@ export default class PokemonService {
       return fetch(`http://localhost:3001/pokemons/${pokemon.id}`,
       {
         method:'PUT',
-        body:JSON.stringify(pokemon)
+        body:JSON.stringify(pokemon),
+        headers:{'content-Type':'application/json'}
       })
       .then(Response=>Response.json())
       .catch(error=>this.handleError(error));
