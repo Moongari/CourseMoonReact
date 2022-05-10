@@ -77,7 +77,7 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
     e.preventDefault(); // on bloque le comportement natif du formulaire afin de le gerer nous meme.
 
     const isFormValid = validateForm();
-    alert(isFormValid);
+    //alert(isFormValid);
     if(isFormValid){
         history.push(`/pokemons/${pokemon.id}`);
     }

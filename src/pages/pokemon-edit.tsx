@@ -2,21 +2,16 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import PokemonForm from '../components/pokemon-form';
 import Pokemon from '../models/pokemon';
-import POKEMONS from '../models/mock-pokemon';
+import PokemonService from '../services/pokemon-service';
  
 type Params = { id: string };
   
 const PokemonEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
     
   const [pokemon, setPokemon] = useState<Pokemon|null>(null);
-  
+  //le + permet de convertir la chaine de caractere en un number
   useEffect(() => {
-    fetch(`http://localhost:3001/pokemons/${match.params.id}`)
-    .then(response=>response.json())
-    .then(pokemon=>{
-        if(pokemon.id)  setPokemon(pokemon);
-       
-    });
+    PokemonService.getPokemon(+match.params.id).then(pokemon=>setPokemon(pokemon));
   }, [match.params.id]);
     
   return (
