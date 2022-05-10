@@ -7,12 +7,13 @@ type Props = {
   pokemon: Pokemon
 };
 
+// on definit ici un objet de type Field qui va permettre de valider et mettre a jour chaque champs du formulaire
 type Field={
     value?:any,
     error?:string,
     isValid?:boolean
 }
-
+// on definit un objet form qui correspond au champs du formulaire
 type Form ={
     name:Field,
     hp:Field,
@@ -76,6 +77,45 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
     e.preventDefault(); // on bloque le comportement natif du formulaire afin de le gerer nous meme.
     console.log(form);
     history.push(`/pokemons/${pokemon.id}`);
+  }
+
+
+  const validateForm=()=>{
+      let newForm: Form = form;
+
+      //Validation du name
+    if(!/^[a-zA-Zàéè]{3,25}$/.test(form.name.value)){
+        const errMsg: string = 'le nom du pokemon est requi (1-25).';
+        const newField: Field ={value:form.name.value,error:errMsg,isValid:false};
+        newForm ={...newForm,...{name:newField}};
+    }else{
+        const newField:Field = {value:form.name.value, error:'',isValid:true};
+        newForm ={...newForm,...{name:newField}};
+    }
+
+        //Validation du hp
+        if(!/^[0-9]{1,3}$/.test(form.hp.value)){
+            const errMsg: string = 'les points de vie du pokemon sont compris entre 0 et 999';
+            const newField: Field ={value:form.hp.value,error:errMsg,isValid:false};
+            newForm ={...newForm,...{name:newField}};
+        }else{
+            const newField:Field = {value:form.hp.value, error:'',isValid:true};
+            newForm ={...newForm,...{name:newField}};
+        }
+
+           //Validation du cp
+           if(!/^[0-9]{1,2}$/.test(form.hp.value)){
+            const errMsg: string = 'les points de vie du pokemon sont compris entre 0 et 99';
+            const newField: Field ={value:form.hp.value,error:errMsg,isValid:false};
+            newForm ={...newForm,...{name:newField}};
+        }else{
+            const newField:Field = {value:form.hp.value, error:'',isValid:true};
+            newForm ={...newForm,...{name:newField}};
+        }
+
+        SetForm(newForm);
+        return newForm.name.isValid && newForm.hp.isValid && newForm.cp.isValid;
+
   }
    
   return (
