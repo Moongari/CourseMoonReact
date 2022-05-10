@@ -25,7 +25,11 @@ const PokemonCard : FunctionComponent<Props>=({pokemon,backgroundcolor="gray"})=
     }
 
     const hideBorder=()=>{
-        setColor("white"); // on remet la couleur gris
+        setColor("white"); // on remet la couleur white
+    }
+
+    const formatDate = (date: Date): string =>{
+      return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
     }
 
     return(
@@ -38,7 +42,8 @@ const PokemonCard : FunctionComponent<Props>=({pokemon,backgroundcolor="gray"})=
         <div className="card-stacked">
           <div className="card-content">
             <p>{pokemon.name}</p>
-            <p><small>{pokemon.created.toString()}</small></p>
+            <p><small>{formatDate(pokemon.created)}</small></p>
+          
           </div>
         </div>
       </div> 
