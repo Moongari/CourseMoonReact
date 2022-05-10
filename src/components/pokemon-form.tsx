@@ -172,7 +172,7 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
                 {/* Pokemon hp */}
                 <div className="form-group">
                   <label htmlFor="hp">Point de vie</label>
-                  <input id="hp" type="number" name="hp" className="form-control" value={form.hp.value} onChange={e=>handleInputChange(e)}></input>
+                  <input id="hp" type="text" name="hp" className="form-control" value={form.hp.value} onChange={e=>handleInputChange(e)}></input>
                         {
                         form.hp.error && 
                             <div className='card-panel red accent-1'>
@@ -183,7 +183,7 @@ const PokemonForm: FunctionComponent<Props> = ({pokemon}) => {
                 {/* Pokemon cp */}
                 <div className="form-group">
                   <label htmlFor="cp">Dégâts</label>
-                  <input id="cp" type="number" name="cp" className="form-control" value={form.cp.value} onChange={e=>handleInputChange(e)}></input>
+                  <input id="cp" type="text" name="cp" className="form-control" value={form.cp.value} onChange={e=>handleInputChange(e)}></input>
                         {
                         form.cp.error && 
                             <div className='card-panel red accent-1'>
