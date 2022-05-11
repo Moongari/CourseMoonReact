@@ -8,6 +8,8 @@ import PokemonList from './pages/pokemon-list';
 import PageNotFound from './pages/page-not-found';
 import PokemonEdit from './pages/pokemon-edit';
 import PokemonAdd from './pages/pokemon-add';
+import Login from './pages/login';
+import PrivateRoute from './PrivateRoute';
 
 /* ========Mise en place de la gestion des routes dans notre application dans le fichier app ========= */
 
@@ -25,11 +27,12 @@ const App: FunctionComponent = () => {
         </nav>
                {/** systeme de route de notre application ****/}
                <Switch>
-                 <Route exact path="/" component = {PokemonList}/>
-                 <Route exact path="/pokemons" component = {PokemonList}/>
-                 <Route exact path="/pokemon/add" component={PokemonAdd}/>
-                 <Route exact path="/pokemons/:id" component = {PokemonsDetail}/>
-                 <Route exact path="/pokemon/edit/:id" component={PokemonEdit}/>
+                 <PrivateRoute exact path="/" component = {PokemonList}/>
+                 <Route exact path="/login" component={Login}/>
+                 <PrivateRoute exact path="/pokemons" component = {PokemonList}/>
+                 <PrivateRoute exact path="/pokemon/add" component={PokemonAdd}/>
+                 <PrivateRoute exact path="/pokemons/:id" component = {PokemonsDetail}/>
+                 <PrivateRoute exact path="/pokemon/edit/:id" component={PokemonEdit}/>
                 <Route component={PageNotFound}/> 
                </Switch>
       </div>
