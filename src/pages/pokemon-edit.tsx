@@ -13,13 +13,21 @@ const PokemonEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) 
   useEffect(() => {
     PokemonService.getPokemon(+match.params.id).then(pokemon=>setPokemon(pokemon));
   }, [match.params.id]);
+
+  const isPokemonIdExist =():boolean=>{
+    if(match.params.id !== null){
+      return true;
+    }else{
+      return false;
+    }
+  }
     
   return (
     <div>
       { pokemon ? (
         <div className="row">
-            <h2 className="header center">Éditer { pokemon.name }</h2>
-            <PokemonForm pokemon={pokemon}></PokemonForm>
+            <h2 className="header center">Modifier le pokemon : { pokemon.name }</h2>
+            <PokemonForm pokemon={pokemon} hasNewPok={false}></PokemonForm>
         </div>
       ) : (
         <h4 className="center">Aucun pokémon à afficher !</h4>

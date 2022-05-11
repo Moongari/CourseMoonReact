@@ -1,4 +1,5 @@
 import React,{FunctionComponent, useState} from "react";
+import formatDate from "../helpers/format-date";
 import Pokemon from "../models/pokemon";
 import './pokemon-card.css';
 
@@ -30,7 +31,7 @@ const PokemonCardBorder : FunctionComponent<Props> =({pokemon,borderColor="gray"
             <div className="card-stacked">
               <div className="card-content">
                 <p>{pokemon.name}</p>
-                <p><small>{pokemon.created.toString()}</small></p>
+                <p><small>{formatDate(pokemon.created)}</small></p>
               </div>
             </div>
           </div> 

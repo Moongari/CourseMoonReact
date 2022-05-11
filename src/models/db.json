@@ -2,7 +2,7 @@
   "pokemons": [
     {
       "id": 1,
-      "name": "Bulbizarre",
+      "name": "Bulbizarreeee",
       "hp": 25,
       "cp": 5,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
@@ -55,16 +55,6 @@
       ]
     },
     {
-      "id": 6,
-      "name": "Rattata",
-      "hp": 18,
-      "cp": 6,
-      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/019.png",
-      "types": [
-        "Normal"
-      ]
-    },
-    {
       "id": 7,
       "name": "Piafabec",
       "hp": 14,
@@ -73,16 +63,6 @@
       "types": [
         "Normal",
         "Vol"
-      ]
-    },
-    {
-      "id": 8,
-      "name": "Abo",
-      "hp": 16,
-      "cp": 4,
-      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/023.png",
-      "types": [
-        "Poison"
       ]
     },
     {
@@ -106,16 +86,6 @@
       ]
     },
     {
-      "id": 11,
-      "name": "Mélofée",
-      "hp": 25,
-      "cp": 5,
-      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/035.png",
-      "types": [
-        "Fée"
-      ]
-    },
-    {
       "id": 12,
       "name": "Groupix",
       "hp": 17,
@@ -123,6 +93,40 @@
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/037.png",
       "types": [
         "Feu"
+      ]
+    },
+    {
+      "id": 1652259656135,
+      "hp": 100,
+      "cp": 10,
+      "name": "Tree",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/185.png",
+      "types": [
+        "Normal"
+      ]
+    },
+    {
+      "id": 1652260596437,
+      "hp": 100,
+      "cp": 10,
+      "name": "Choupi",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/300.png",
+      "types": [
+        "Normal",
+        "Eau",
+        "Insecte"
+      ]
+    },
+    {
+      "id": 1652260766270,
+      "hp": 100,
+      "cp": 10,
+      "name": "OUPI",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/250.png",
+      "types": [
+        "Normal",
+        "Vol",
+        "Combat"
       ]
     }
   ]

@@ -1,3 +1,4 @@
+import { throws } from "assert";
 import Pokemon from "../models/pokemon";
  
 export default class PokemonService {
@@ -18,7 +19,8 @@ export default class PokemonService {
 
 
   //mise a jour d'un pokemon
-  static updatePokemon(pokemon:Pokemon): Promise<Pokemon>{
+  static updatePokemon(pokemon:Pokemon): Promise<Pokemon>
+  {
       return fetch(`http://localhost:3001/pokemons/${pokemon.id}`,
       {
         method:'PUT',
@@ -31,7 +33,38 @@ export default class PokemonService {
 
 
   }
+// renvoie un objet vide si le pokemon a bien ete supprimé
+  static deletePokemon(pokemon:Pokemon):Promise<{}>
+  {
+    return fetch(`http://localhost:3001/pokemons/${pokemon.id}`,
+    
+    {
+      method:'DELETE',
+      headers:{'content-Type':'application/json'}
+  })
+  .then(response=>response.json())
+  .catch(error=>this.handleError(error))
+}
+
+
+// ajout d'un Pokemon
+static addPokemon(pokemon:Pokemon):Promise<Pokemon>
+{
+  
+  delete pokemon.created;
+  
+   return fetch(`http://localhost:3001/pokemons`,
+  {
+    method:'POST',
+    body:JSON.stringify(pokemon),
+    headers:{'content-Type':'application/json'}
+  })
+  .then(response=>response.json())
+  .catch(error=>this.handleError(error));
+  
+}
  
+
   static isEmpty(data: Object): boolean {
     return Object.keys(data).length === 0;
   }
