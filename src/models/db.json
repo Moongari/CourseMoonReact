@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "name": "Salamèche",
+      "name": "SalamècheZZZZ",
       "hp": 28,
       "cp": 6,
       "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png",
@@ -127,6 +127,16 @@
         "Normal",
         "Vol",
         "Combat"
+      ]
+    },
+    {
+      "id": 1652274826501,
+      "hp": 100,
+      "cp": 10,
+      "name": "Surprise",
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/340.png",
+      "types": [
+        "Normal"
       ]
     }
   ]

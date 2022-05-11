@@ -9,7 +9,7 @@ type Params = { id: string };
   
 const PokemonEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
     
-  const [pokemon, setPokemon] = useState<Pokemon|null>(null);
+  const [pokemon, setPokemon] = useState<Pokemon|undefined>(undefined);
   //le + permet de convertir la chaine de caractere en un number
   useEffect(() => {
     PokemonService.getPokemon(+match.params.id).then(pokemon=>setPokemon(pokemon));

@@ -9,7 +9,7 @@ type Params = { id: string };
   
 const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
     
-  const [pokemon, setPokemon] = useState<Pokemon|null>(null);
+  const [pokemon, setPokemon] = useState<Pokemon|undefined>(undefined);
   
   useEffect(() => {
     // POKEMONS.forEach(pokemon => {
