@@ -52,7 +52,7 @@ static addPokemon(pokemon:Pokemon):Promise<Pokemon>
 {
   
   delete pokemon.created;
-  
+
    return fetch(`http://localhost:3001/pokemons`,
   {
     method:'POST',
@@ -72,4 +72,15 @@ static addPokemon(pokemon:Pokemon):Promise<Pokemon>
   static handleError(error:Error):void{
       console.error(error);
   }
+
+
+  //mode de recherche..
+  static searchPokemon(term:string):Promise<Pokemon[]>{
+    return fetch(`http://localhost:3001/pokemons?q=${term}`)
+    .then(response=> response.json())
+    .catch(error=>this.handleError(error));
+  }
+
+
+
 }
